@@ -1,0 +1,38 @@
+type Query{
+	getStudentAll: [Student]
+}
+type Mutation{
+	createStudent(csr: CreateStudentRequest): APIResponse
+}
+
+type APIResponse{
+	data: Student,
+	message: String,
+	status: Int
+}
+type StudentResponse{
+	id: Int,
+	name: String,
+	codeStudent: String,
+	address: String,
+	email: String
+}
+
+type Student{
+	id: Int,
+	name: String,
+	codeStudent: String,
+	address: String,
+	email: String
+}
+input CreateStudentRequest{
+	name: String,
+	codeStudent: String,
+	address: String,
+	email: String
+}
+type StudentSearchPagination {
+	name: String,
+	limit: Int,
+	currentPage: Int
+}
