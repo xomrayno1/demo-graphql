@@ -1,21 +1,46 @@
 type Query{
-	getStudentAll: [Student]
+	getStudentAll(name: String): [Student],
+	getStudentSearchPagination(ssp: StudentSearchPagination): APIResponse
+	getStudent(id: Int): StudentResponse
+	loadArray(loads: [String]): [String]
 }
+
 type Mutation{
-	createStudent(csr: CreateStudentRequest): APIResponse
+	createStudent(csr: CreateStudentRequest): APIResponseCreate
+}
+input StudentSearchPagination{
+	name: String,
+	limit: Int!,
+	currentPage: Int!
 }
 
 type APIResponse{
-	data: Student,
+	data: Data,
 	message: String,
 	status: Int
 }
+
+type APIResponseCreate{
+	data: StudentResponse,
+	message: String,
+	status: Int
+}
+
+type Data {
+	data : [StudentResponse],
+	pagination : Pagination
+}
+ 
 type StudentResponse{
 	id: Int,
 	name: String,
 	codeStudent: String,
 	address: String,
 	email: String
+}
+type Pagination {
+	totalRows: Int,
+	currentPage: Int
 }
 
 type Student{
@@ -30,9 +55,4 @@ input CreateStudentRequest{
 	codeStudent: String,
 	address: String,
 	email: String
-}
-type StudentSearchPagination {
-	name: String,
-	limit: Int,
-	currentPage: Int
 }

@@ -15,4 +15,6 @@ public interface StudentService {
 	Student saveStudent(Student student);
 	
 	List<Student> getAll();
+	
+	Student findById(long id);
 }

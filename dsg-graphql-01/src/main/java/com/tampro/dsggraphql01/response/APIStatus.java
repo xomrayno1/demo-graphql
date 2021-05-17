@@ -1,10 +1,14 @@
-package com.tampro.response;
+package com.tampro.dsggraphql01.response;
 
 public enum APIStatus {
 	
 	OK(200, "Ok"),
-	ERR_EMPLOYEE_NOT_FOUND(504, "Employee not found exception"),
-	ERR_STUDENT_NOT_FOUND(604, "Student not found exception");
+	
+	//error
+	ERR_STUDENT_NOT_FOUND(604, "Student not found exception"),
+	
+	//success
+	SUCCESS_CREATE_STUDENT(601, "Create student success");
 	
 	private final int code;
 	private final String description;

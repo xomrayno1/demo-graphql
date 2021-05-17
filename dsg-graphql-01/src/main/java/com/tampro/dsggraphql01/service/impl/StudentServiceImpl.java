@@ -42,4 +42,10 @@ public class StudentServiceImpl implements StudentService{
 		return studentRepo.findAll();
 	}
 
+	@Override
+	public Student findById(long id) {
+		// TODO Auto-generated method stub
+		return studentRepo.findById(id).orElse(null);
+	}
+
 }

@@ -11,6 +11,7 @@ import com.tampro.dsggraphql01.entity.Student;
 import com.tampro.dsggraphql01.model.APIResponse;
 import com.tampro.dsggraphql01.model.response.StudentResponse;
 import com.tampro.dsggraphql01.request.CreateStudentRequest;
+import com.tampro.dsggraphql01.response.APIStatus;
 import com.tampro.dsggraphql01.service.StudentService;
 import com.tampro.dsggraphql01.utils.ResponseUtil;
 
@@ -32,7 +33,7 @@ public class Mutation {
 			StudentResponse studentResponse = mapper.map(studentSaved, StudentResponse.class);
 //			return ResponseUtil.responseSuccess("tc");
 			//return "success";
-			return ResponseUtil.responseSuccess(studentResponse);
+			return ResponseUtil.buildResponse(APIStatus.SUCCESS_CREATE_STUDENT, studentResponse);
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new Exception("create failed");

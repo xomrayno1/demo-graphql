@@ -2,7 +2,7 @@ package com.tampro.dsggraphql01.model;
 
 import java.io.Serializable;
 
-import com.tampro.response.APIStatus;
+import com.tampro.dsggraphql01.response.APIStatus;
 
 public class APIResponse<T> implements Serializable{
 	private T data;
