@@ -6,9 +6,12 @@ public enum APIStatus {
 	
 	//error
 	ERR_STUDENT_NOT_FOUND(604, "Student not found exception"),
+	ERR_STUDENT_EMAIL_CONFLICT(603,"Student email conflict"),
 	
 	//success
-	SUCCESS_CREATE_STUDENT(601, "Create student success");
+	SUCCESS_CREATE_STUDENT(601, "Create student success"),
+	SUCCESS_UPDATE_STUDENT(602, "Update student success"),
+	SUCCESS_DELETE_STUDENT(603, "Delete student success");
 	
 	private final int code;
 	private final String description;

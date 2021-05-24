@@ -17,4 +17,6 @@ public interface StudentService {
 	List<Student> getAll();
 	
 	Student findById(long id);
+	
+	boolean emailIsExists(String email);
 }

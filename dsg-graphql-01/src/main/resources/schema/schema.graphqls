@@ -6,7 +6,9 @@ type Query{
 }
 
 type Mutation{
-	createStudent(csr: CreateStudentRequest): APIResponseCreate
+	createStudent(csr: CreateStudentRequest): APIResponseObject,
+	updateStudent(usr: UpdateStudentRequest): APIResponseObject,
+	deleteStudent(id: Int): APIResponseObject 
 }
 input StudentSearchPagination{
 	name: String,
@@ -20,12 +22,12 @@ type APIResponse{
 	status: Int
 }
 
-type APIResponseCreate{
+type APIResponseObject{
 	data: StudentResponse,
 	message: String,
 	status: Int
 }
-
+ 
 type Data {
 	data : [StudentResponse],
 	pagination : Pagination
@@ -51,6 +53,13 @@ type Student{
 	email: String
 }
 input CreateStudentRequest{
+	name: String!,
+	codeStudent: String!,
+	address: String!,
+	email: String!
+}
+input UpdateStudentRequest{
+	id: Int!,
 	name: String,
 	codeStudent: String,
 	address: String,

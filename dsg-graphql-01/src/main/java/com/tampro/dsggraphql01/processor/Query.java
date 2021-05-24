@@ -14,6 +14,7 @@ import com.netflix.graphql.dgs.DgsData;
 import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
 import com.tampro.dsggraphql01.entity.Student;
+import com.tampro.dsggraphql01.exception.StudentNotFoundException;
 import com.tampro.dsggraphql01.model.APIResponse;
 import com.tampro.dsggraphql01.model.Pagination;
 import com.tampro.dsggraphql01.model.request.StudentSearchPagination;
@@ -56,18 +57,14 @@ public class Query {
 		
 	@DgsData(field = "getStudent", parentType = "Query" )
 	public StudentResponse getStudent(@InputArgument("id") long id){
-		Student student	=	studentService.findById(id);
-		return mapper.map(student, StudentResponse.class);
+		try {
+			Student student	=	studentService.findById(id);
+			return mapper.map(student, StudentResponse.class);
+		} catch (Exception e) {
+			throw new StudentNotFoundException("Student not found exception with id : "+ id);
+		}
 	}
-	
-	@DgsData(field = "update", parentType = "Query")
-	public String upload(DataFetchingEnvironment fetchingEnvironment  ) {
-		
-		
-		return "success";
-	}
-	
-	
+  
 	@DgsQuery
 	public List<String> loadArray(@InputArgument(collectionType = String.class, value = "loads") List<String> loads) {
 		loads.forEach(System.out::println);

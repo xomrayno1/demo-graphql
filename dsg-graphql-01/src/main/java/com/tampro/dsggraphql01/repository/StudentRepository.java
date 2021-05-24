@@ -8,4 +8,5 @@ import com.tampro.dsggraphql01.entity.Student;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long>{
 
+	Student findByEmail(String email);
 }

@@ -48,4 +48,10 @@ public class StudentServiceImpl implements StudentService{
 		return studentRepo.findById(id).orElse(null);
 	}
 
+	@Override
+	public boolean emailIsExists(String email) {
+		// TODO Auto-generated method stub
+		return studentRepo.findByEmail(email) != null ? true : false;
+	}
+
 }
